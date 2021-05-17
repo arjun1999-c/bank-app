@@ -7,6 +7,15 @@ h1,h3{
     text-align: center;
 }
 .bank{
-    background-color: white;
+    background-color:rgb(238, 185, 105);
+    text-align: center;
+}
+.one{
+    background-color: rgb(190, 145, 93);
     
 }
+.two{
+    background-color: rgb(190, 145, 93);
+}
+    
+    
