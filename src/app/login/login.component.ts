@@ -1,4 +1,6 @@
+import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
     1003: { acno: 1003, username: "userfour", password: "userfour", balance: 6000 }
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -31,22 +33,31 @@ export class LoginComponent implements OnInit {
   // }
 
   login() {
-   // alert("login clicked")
+    // alert("login clicked")
     var accno = this.acno;
-    var pwd=this.pwd;
-    let users=this.accountDetails;
+    var pwd = this.pwd;
+    let users = this.accountDetails;
     if (accno in users) {
-        if(pwd==users[accno]["password"]){
-          alert("login succesfull");
-        }
-    
-  else{
-      alert("incorrect password");
+      if (pwd == users[accno]["password"]) {
+        alert("login succesfull");
+        this.router.navigateByUrl("dashboard")
+      }
+
+      else {
+        alert("incorrect password");
+      }
+    }
+    else {
+      alert("invalid account no");
+    }
+
+  }
+  register(){
+    this.router.navigateByUrl("register");
   }
 }
-else{
-  alert("invalid account no");
-}
 
-}
-}
+
+
+
+
