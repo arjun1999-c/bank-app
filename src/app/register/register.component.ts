@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -12,14 +13,31 @@ export class RegisterComponent implements OnInit {
   acno = "";
   pwd = "";
 
-  constructor(private dataService:DataService,private router:Router) { }//dependency injection
+  registerform = this.fb.group(
+    {
+      uname:['',[Validators.required,Validators.pattern('[a-zA-Z]*')]],
+      acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+      pwd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]]
+
+    }
+  )
+
+  constructor(private dataService:DataService,private router:Router,private fb:FormBuilder) { }//dependency injection
 
   ngOnInit(): void {
   }
   register() {
-    var username=this.uname;
-    var acno=this.acno;
-    var password=this.pwd;
+    console.log(this.registerform.get('uname')?.errors);
+    if(this.registerform.get('uname')?.errors){
+      alert("username is required");
+    }
+    
+    if(this.registerform.valid){
+      var username=this.registerform.value.uname;
+    var acno=this.registerform.value.acno;
+    var password=this.registerform.value.pwd;
+
+    //console.log(username,acno,password);
   
    const result= this.dataService.register(username,acno,password)
    if(result){
@@ -31,6 +49,15 @@ export class RegisterComponent implements OnInit {
     alert("user exist....pls login")
 
    }
+      
+    }
+    else{
+      alert("form invalid")
+    }
+     
+     
+
+    
   }
 
 }

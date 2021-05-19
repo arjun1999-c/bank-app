@@ -10,13 +10,14 @@
             <div class="col-4"></div>
             <div class="col-4">
                 <div class="bank">
-                    <form (ngSubmit)="register()">
+                    <form [formGroup]="registerform" (ngSubmit)="register()">
                     <!-- <img src="assets\images\sbi.jpg"><br> -->
-                    <input type="text" class="two"name="accno" id="accno" [(ngModel)]="acno" placeholder="enter account number">
+                    <input type="text" class="two"name="accno" id="accno"formControlName="acno" placeholder="enter account number">
                     <br><br>
-                    <input type="text" class="three"name="uname" value="username"[(ngModel)]="uname" placeholder="enter your username"><br><br>
+                    <input type="text" class="three"name="uname" value="username"formControlName="uname" placeholder="enter your username">
+                    <div class="errors">invalid username</div>
 
-                    <input type="password" class="two"name="pswd" id="pwd" [(ngModel)]="pwd" placeholder="enter password">
+                    <input type="password" class="two"name="pswd" id="pwd"formControlName="pwd" placeholder="enter password">
                     <br><br>
 
                     <button type="submit" class="btn btn-warning">Register</button><br><br>
