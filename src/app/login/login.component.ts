@@ -1,6 +1,7 @@
 import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +12,9 @@ export class LoginComponent implements OnInit {
   aim = "Your Perfect Banking Partner";
   acno = "account number pls";
   pwd = "";
-  accountDetails = {
-    1000: { acno: 1000, username: "userone", password: "1000", balance: 50000 },
-    1001: { acno: 1001, username: "usertwo", password: "usertwo", balance: 5000 },
-    1002: { acno: 1002, username: "userthree", password: "userthree", balance: 10000 },
-    1003: { acno: 1003, username: "userfour", password: "userfour", balance: 6000 }
-  }
+  amount="";
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private dataService:DataService) { }
 
   ngOnInit(): void {
   }
@@ -36,11 +32,11 @@ export class LoginComponent implements OnInit {
     // alert("login clicked")
     var accno = this.acno;
     var pwd = this.pwd;
-    let users = this.accountDetails;
+    let users = this.dataService.accountDetails;
     if (accno in users) {
       if (pwd == users[accno]["password"]) {
         alert("login succesfull");
-        this.router.navigateByUrl("dashboard")
+        this.router.navigateByUrl("dashboard");
       }
 
       else {

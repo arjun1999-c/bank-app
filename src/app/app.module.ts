@@ -13,7 +13,8 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    
   ],
   imports: [
     BrowserModule,

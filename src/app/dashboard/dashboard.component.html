@@ -1,1 +1,50 @@
-<p>dashboard works!</p>
+<div class="container">
+    <h1><b><u>Welcome User</u></b></h1>
+    <div class="row">
+
+
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="main">
+                <form action="#">
+                    <h2>Deposit Form</h2>
+                    <form (ngSubmit)="Deposit()">
+
+                        <input id="acno" type="text" class="text" name="accno" [(ngModel)]="dAccno"
+                            placeholder="enter the account number"><br><br>
+                        <input id="pwd" type="password" class="text" name="pwd" [(ngModel)]="dPwd"><br><br>
+                        <input id="amn" type="text" class="text" placeholder="amount" name="amount" [(ngModel)]="amn"><br><br>
+                        <input type="submit" class="btn btn-success" value="Deposit">
+                    </form>
+                </form>
+            </div>
+        </div>
+        <div class="col-4"></div>
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="main">
+                <form action="#">
+
+                    <h2>Withdraw Form</h2>
+                    <form (ngSubmit)="Withdraw()">
+
+                        <input id="acno" type="text" class="text" name="acno" [(ngModule="wAccno" )]
+                            placeholder="enter the account number"><br><br>
+                        <input id="pwd" type="password" class="text" name="pswd" [(ngModule="wPwd" )]> <br><br>
+                        <input id="amn" type="text" class="text" placeholder="Amount" name="amount" [(ngModule="wamn"
+                            )]><br><br>
+                        <input type="submit" class="btn btn-warning" value="Withdraw">
+                    </form>
+                </form>
+            </div>
+        </div>
+        <div class="col-4"></div>
+
+    </div>
+</div>

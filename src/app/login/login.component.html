@@ -10,15 +10,19 @@
             <div class="col-4"></div>
             <div class="col-4">
                 <div class="bank">
+                    <form (ngSubmit)="login()">
                     <!-- <img src="assets\images\sbi.jpg"><br> -->
-                    <input type="text" class="two" id="accno" [(ngModel)]="acno" placeholder="enter account number">
+                    <input type="text"class="name"placeholder="enter your username"><br><br>
+                    
+                    <input type="text" class="two" name="accno" id="accno" [(ngModel)]="acno" placeholder="enter account number">
                     <br><br>
-                    <input type="text" class="two" id="pwd" [(ngModel)]="pwd" placeholder="enter password">
+                    <input type="password" class="two" name="pswd" id="pwd" [(ngModel)]="pwd" placeholder="enter password">
                     <br><br>
-                    <button class="btn btn-success" (click)="login()">login</button><br>
+                    <button type="submit" class="btn btn-success">login</button><br>
                     <a class="text" routerLink="register">forgotten password</a><br><br>
 
-                    <button class="btn btn-warning" (click)="register()">Create New Account</button>
+                    <button type="button" class="btn btn-warning" (click)="register()">Create New Account</button>
+                    </form>
                 </div>
 
 
