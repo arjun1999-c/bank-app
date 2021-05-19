@@ -43,7 +43,7 @@ export class DashboardComponent implements OnInit {
     const result = this.dataService.Withdraw(acno, password, amount)
 
     if (result) {
-      alert("The given amount " + amount + "has been credited... and Balance is:" + result);
+      alert("The given amount " + amount + "has been debited... and Balance is:" + result);
     }
 
   }

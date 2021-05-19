@@ -23,22 +23,22 @@
 
     </div>
 </div>
+
 <div class="container">
     <div class="row">
+
 
         <div class="col-4"></div>
         <div class="col-4">
             <div class="main">
                 <form action="#">
-
                     <h2>Withdraw Form</h2>
                     <form (ngSubmit)="Withdraw()">
 
-                        <input id="acno" type="text" class="text" name="acno" [(ngModule="wAccno" )]
+                        <input id="acno" type="text" class="text" name="accno" [(ngModel)]="wAccno"
                             placeholder="enter the account number"><br><br>
-                        <input id="pwd" type="password" class="text" name="pswd" [(ngModule="wPwd" )]> <br><br>
-                        <input id="amn" type="text" class="text" placeholder="Amount" name="amount" [(ngModule="wamn"
-                            )]><br><br>
+                        <input id="pwd" type="password" class="text" name="pwd" [(ngModel)]="wPwd"><br><br>
+                        <input id="amn" type="text" class="text" placeholder="amount" name="amount" [(ngModel)]="wamn"><br><br>
                         <input type="submit" class="btn btn-warning" value="Withdraw">
                     </form>
                 </form>
