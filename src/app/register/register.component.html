@@ -14,11 +14,15 @@
                     <!-- <img src="assets\images\sbi.jpg"><br> -->
                     <input type="text" class="two"name="accno" id="accno"formControlName="acno" placeholder="enter account number">
                     <br><br>
-                    <input type="text" class="three"name="uname" value="username"formControlName="uname" placeholder="enter your username">
-                    <div class="errors">invalid username</div>
+                    <div *ngIf= "(registerform.get('acno')?.touched || registerform.get('acno')?.dirty) && registerform.get('acno')?.errors" class="errors"> invalid account number</div>
+                    <input type="text" class="three" value="username"formControlName="uname" placeholder="enter your username">
+                    <div *ngIf="(registerform.get('uname')?.touched || registerform.get('uname')?.dirty) && registerform.get('uname')?.errors" class="errors">invalid username</div><br><br>
 
-                    <input type="password" class="two"name="pswd" id="pwd"formControlName="pwd" placeholder="enter password">
+                    <input type="password" class="two" id="pswd"formControlName="pwd" placeholder="enter password">
+                    <div *ngIf="(registerform.get('pwd')?.touched || registerform.get('pwd')?.dirty) && registerform.get('pwd')?.errors" class="errors">invalid password</div><br><br>
+
                     <br><br>
+
 
                     <button type="submit" class="btn btn-warning">Register</button><br><br>
 

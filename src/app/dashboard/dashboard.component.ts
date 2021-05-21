@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -7,24 +8,33 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  dAccno = "";
-  dPwd = "";
-  amn = "";
+depositform=this.fb.group(
+  {
+    acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+      pwd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]],
+      amount:['',[Validators.required,Validators.pattern('[0-9]*')]]
 
-  wAccno = "";
-  wPwd = "";
-  wamn = "";
+  }
+)
+withdrawform=this.fb.group(
+  {
+    acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    pwd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]],
+    amount:['',[Validators.required,Validators.pattern('[0-9]*')]]
+  }
+)
 
-  constructor(private dataService: DataService) { }
+
+  constructor(private dataService: DataService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
   Deposit() {
-    // alert("Amount Credited");
+    if(this.depositform.valid){
 
-    var acno = this.dAccno;
-    var password = this.dPwd;
-    var amount = this.amn;
+      var acno = this.depositform.value.acno;
+    var password = this.depositform.value.pwd;
+    var amount = this.depositform.value.amount;
 
     const result = this.dataService.Deposit(acno, password, amount)
 
@@ -32,19 +42,30 @@ export class DashboardComponent implements OnInit {
       alert("The given amount " + amount + "has been credited... and Balance is:" + result);
     }
 
+    }
+    else{
+      alert("invalid form")
+    }
+
+    
   }
   Withdraw() {
-    // alert("Amount Credited");
-
-    var acno = this.wAccno;
-    var password = this.wPwd;
-    var amount = this.wamn;
-
-    const result = this.dataService.Withdraw(acno, password, amount)
-
-    if (result) {
-      alert("The given amount " + amount + "has been debited... and Balance is:" + result);
+    if(this.withdrawform.valid){
+      var acno = this.withdrawform.value.acno;
+      var password = this.withdrawform.value.pwd;
+      var amount = this.withdrawform.value.amount;
+  
+      const result = this.dataService.Withdraw(acno, password, amount)
+  
+      if (result) {
+        alert("The given amount " + amount + "has been debited... and Balance is:" + result);
+      }
     }
+    else{
+      alert("invalid form")
+    }
+
+    
 
   }
 

@@ -1,5 +1,6 @@
 import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -10,50 +11,40 @@ import { DataService } from '../services/data.service';
 })
 export class LoginComponent implements OnInit {
   aim = "Your Perfect Banking Partner";
-  acno = "account number pls";
-  pwd = "";
-  amount="";
+  loginform = this.fb.group(
+    {
+      acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+      pwd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]]
+    }
+  )
+  
 
-  constructor(private router: Router,private dataService:DataService) { }
+    
+
+  constructor(private router: Router,private dataService:DataService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
-  // accnoChange(event: any) {
-  //   this.accno = event.target.value;
-  //   console.log(this.accno);
 
-  // }
-  // pwdChange(event: any) {
-  //   this.pwd = event.target.value;
-  //   console.log(this.pwd);
-  // }
+  login(){
+    
+    if(this.loginform.valid){
 
-  login() {
-    // alert("login clicked")
-    var accno = this.acno;
-    var pwd = this.pwd;
-    let users = this.dataService.accountDetails;
-    if (accno in users) {
-      if (pwd == users[accno]["password"]) {
-        alert("login succesfull");
-        this.router.navigateByUrl("dashboard");
-      }
+    var acno=this.loginform.value.acno;
+    var password=this.loginform.value.pwd;
 
-      else {
-        alert("incorrect password");
-      }
-    }
-    else {
-      alert("invalid account no");
-    }
+const result= this.dataService.login(acno,password)
+   if (result){
 
-  }
-  register(){
-    this.router.navigateByUrl("register");
+    alert("successfully login");
+    this.router.navigateByUrl("dashboard");
   }
 }
-
-
-
-
-
+ else{
+    alert("invalid form")
+ }
+}
+         register(){
+           this.router.navigateByUrl("register");
+         }
+  }

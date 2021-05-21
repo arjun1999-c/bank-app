@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
+import { LoginComponent } from '../login/login.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  accountDetails = {
+  // login(_acno: any, _password: any) {
+  //   throw new Error('Method not implemented.');
+    
+  accountDetails:any = {
     1000: { acno: 1000, username: "userone", password: "1000", balance: 50000 },
     1001: { acno: 1001, username: "usertwo", password: "usertwo", balance: 5000 },
     1002: { acno: 1002, username: "userthree", password: "userthree", balance: 10000 },
@@ -31,6 +35,25 @@ register(username:any,acno:any,password:any){
     }
 
 }
+login(acno: any, password: any){
+  let users = this.accountDetails;
+  if(acno in users){
+    if(password==users[acno]["password"]){
+      return true;
+
+    }
+    else{
+      alert("invalid password");
+      return false;
+    }
+  }
+  else{
+    alert("invalid account number");
+    return false;
+  }
+
+}
+
 
 Deposit(acno:any,password:any,amn:any){
 

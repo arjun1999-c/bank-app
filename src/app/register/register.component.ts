@@ -31,6 +31,18 @@ export class RegisterComponent implements OnInit {
     if(this.registerform.get('uname')?.errors){
       alert("username is required");
     }
+
+   console.log(this.registerform.get('acno')?.errors);
+      if(this.registerform.get('acno')?.errors){
+        alert("account number is required");
+      }
+      console.log(this.registerform.get('pwd')?.errors);
+    if(this.registerform.get('pwd')?.errors){
+      alert("password  required");
+    }
+
+
+    
     
     if(this.registerform.valid){
       var username=this.registerform.value.uname;
@@ -47,12 +59,13 @@ export class RegisterComponent implements OnInit {
    }
    else{
     alert("user exist....pls login")
+  
 
    }
       
     }
     else{
-      alert("form invalid")
+     // alert("form invalid")
     }
      
      

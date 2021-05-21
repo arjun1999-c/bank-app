@@ -10,15 +10,17 @@
             <div class="col-4"></div>
             <div class="col-4">
                 <div class="bank">
-                    <form (ngSubmit)="login()">
+                    <form [formGroup]="loginform" (ngSubmit)="login()">
                     <!-- <img src="assets\images\sbi.jpg"><br> -->
-                    <input type="text"class="name"placeholder="enter your username"><br><br>
+        
                     
-                    <input type="text" class="two" name="accno" id="accno" [(ngModel)]="acno" placeholder="enter account number">
+                    <input type="text" class="two" id="accno"formControlName="acno"placeholder="enter account number">
+                    <div *ngIf= "(loginform.get('acno')?.touched || loginform.get('acno')?.dirty) && loginform.get('acno')?.errors" class="errors"> invalid account number</div>
                     <br><br>
-                    <input type="password" class="two" name="pswd" id="pwd" [(ngModel)]="pwd" placeholder="enter password">
+                    <input type="password" class="two" id="pswd"formControlName="pwd" placeholder="enter password">
+                    <div *ngIf="(loginform.get('pwd')?.touched || loginform.get('pwd')?.dirty) && loginform.get('pwd')?.errors" class="errors">invalid password</div><br><br>
                     <br><br>
-                    <button type="submit" class="btn btn-success">login</button><br>
+                    <button type="submit"class="btn btn-success">login</button><br>
                     <a class="text" routerLink="register">forgotten password</a><br><br>
 
                     <button type="button" class="btn btn-warning" (click)="register()">Create New Account</button>
