@@ -3,3 +3,6 @@ h1{
     font-style:oblique;
     color: brown;
 }
+.errors{
+    color: red;
+}

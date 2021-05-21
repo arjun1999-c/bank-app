@@ -23,7 +23,7 @@ withdrawform=this.fb.group(
     amount:['',[Validators.required,Validators.pattern('[0-9]*')]]
   }
 )
-
+user=this.dataService.currentuser;
 
   constructor(private dataService: DataService,private fb:FormBuilder) { }
 

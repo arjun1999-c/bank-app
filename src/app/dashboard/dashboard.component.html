@@ -1,5 +1,5 @@
 <div class="container">
-    <h1><b><u>Welcome User</u></b></h1>
+    <h1><b><u>Welcome {{user}}</u></b></h1>
     <div class="row">
 
 
@@ -11,16 +11,16 @@
                     <form [formGroup]="depositform"(ngSubmit)="Deposit()">
 
                         <input id="accno" type="text" class="text" name="accno"formControlName="acno"
-                            placeholder="enter the account number"><br><br>
+                            placeholder="enter the account number"><br>
                         <div *ngIf="(depositform.get('acno')?.touched || depositform.get('acno')?.dirty) && depositform.get('acno')?.errors"
-                            class="errors"> invalid account number</div>
+                            class="errors"> invalid account number</div><br>
                         <input id="pswd" type="password" class="text" name="pwd"formControlName="pwd"><br>
                         <div *ngIf="(depositform.get('pwd')?.touched || depositform.get('pwd')?.dirty) && depositform.get('pwd')?.errors"
                             class="errors">invalid password</div><br>
                         <input id="amns" type="text" class="text" placeholder="amount" name="Amount"
-                            formControlName="amount"><br><br>
+                            formControlName="amount"><br>
                         <div *ngIf="(depositform.get('amount')?.touched || depositform.get('amount')?.dirty) && depositform.get('amount')?.errors"
-                            class="errors">amount required</div>
+                            class="errors">amount required</div><br>
                         <input type="submit" class="btn btn-success" value="Deposit">
                     </form>
                 </form>
@@ -43,16 +43,16 @@
                     <form [formGroup]="withdrawform"  (ngSubmit)="Withdraw()">
 
                         <input id="accno" type="text" class="text" formControlName="acno"
-                            placeholder="enter the account number"><br><br>
+                            placeholder="enter the account number"><br>
                         <div *ngIf="(withdrawform.get('acno')?.touched || withdrawform.get('acno')?.dirty) && withdrawform.get('acno')?.errors"
-                            class="errors"> invalid account number</div>
+                            class="errors"> invalid account number</div><br>
                         <input id="pswd" type="password" class="text" name="pwd" formControlName="pwd"><br>
                         <div *ngIf="(withdrawform.get('pwd')?.touched || withdrawform.get('pwd')?.dirty) && withdrawform.get('pwd')?.errors"
                             class="errors">invalid password</div><br>
                         <input id="amnd" type="text" class="text" placeholder="amount" name="amount"
-                            formControlName="amount"><br><br>
+                            formControlName="amount"><br>
                         <div *ngIf="(withdrawform.get('amount')?.touched || withdrawform.get('amount')?.dirty) && withdrawform.get('amount')?.errors"
-                            class="errors">amount required</div>
+                            class="errors">amount required</div><br>
                         <input type="submit" class="btn btn-warning" value="Withdraw">
                     </form>
                 </form>
